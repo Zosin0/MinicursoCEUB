@@ -1,7 +1,95 @@
-<html>
-	<body>
+<!DOCTYPE html>
+<html lang="pt-br">
 
-		<h1>ESSE CODIGO SO TA NA DEV</h1>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css  ">
+    <script src="app.js"></script>
 
-	</body>
+    <title>Flex-Grid + Inputs</title>
+</head>
+
+<body>
+    <section class="quadrados">
+        <div id="div1"></div>
+        <div id="div2"></div>
+        <div id="div3"></div>
+        <div id="div4"></div>
+    </section>
+    <br><br><br>
+    <hr>
+    <section class="inputs" name="inputs">
+        <label for="input">Aqui é o texto referente ao input:</label>
+        <input id="input" name="input" type="checkbox">
+        <label for="input"></label>
+        <input id="input" name="input" type="color">
+        <label for="input"></label>
+        <input id="input" name="input" type="date">
+        <label for="input"></label>
+        <input id="input" name="input" type="datetime-local">
+        <label for="input"></label>
+        <input id="input" name="input" type="email" :valid>
+        <label for="input"></label>
+        <input id="input" name="input" type="file" accept=".png">
+        <label for="input"></label>
+        <input id="input" name="input" type="hidden">
+        <label for="input"></label>
+        <input id="input" name="input" type="image">
+        <label for="input"></label>
+        <input id="input" name="input" type="month">
+        <label for="input"></label>
+        <input id="input" name="input" type="number">
+        <label for="input"></label>
+        <input id="input" name="input" type="password">
+        <label for="input"></label>
+        <input id="input" name="input" type="radio">
+        <label for="input"></label>
+        <input id="input" name="input" type="range">
+        <label for="input"></label>
+        <input id="input" name="input" type="reset">
+        <label for="input"></label>
+        <input id="input" name="input" type="search">
+        <label for="input"></label>
+        <input id="input" name="input" type="submit">
+        <label for="input"></label>
+        <input id="input" name="input" type="tel">
+        <label for="input"></label>
+        <input id="input" name="input" type="text">
+        <label for=""></label>
+        <input id="input" name="input" type="time">
+        <label for="input"></label>
+        <input id="input" name="input" type="url">
+        <label for="input"></label>
+        <input id="input" name="input" type="week">
+        <label for="input"></label>
+        <input id="input" name="input" type="button">
+        <label for="input"></label>
+    </section>
+    <hr>
+    <a href="form.html"> Clique aqui para ir para o form</a>
+
+    <hr>
+
+    <h5>Nome de Usuários cadastrados: </h5><br>
+    <ul id="userList"></ul>
+</body>
+<script>
+    if (localStorage.getItem("users")) {
+        users = JSON.parse(localStorage.getItem("users"));
+    }
+
+    // Crie uma string HTML para exibir a lista de usuários
+    let userListHTML = "";
+    users.forEach(function (user) {
+        userListHTML += "<li style='color: black; font-size: 30px;'>" + user + "</li>";
+    });
+
+    // Adicione a string HTML à página usando a propriedade innerHTML
+    const userList = document.getElementById("userList");
+    userList.innerHTML = userListHTML;
+</script>
+
+
 </html>
