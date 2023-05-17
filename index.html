@@ -73,22 +73,30 @@
     <hr>
 
     <h5>Nome de Usuários cadastrados: </h5><br>
-    <ul id="userList"></ul>
+    <ul id="listaUsuarios"></ul>
 </body>
 <script>
-    if (localStorage.getItem("users")) {
-        users = JSON.parse(localStorage.getItem("users"));
+    function mostrarListaUsuarios() {
+        var dados = JSON.parse(localStorage.getItem("dadosForm")); // Obtém os dados do localStorage
+        var listaUsuarios = document.getElementById("listaUsuarios");
+
+        listaUsuarios.innerHTML = ""; // Limpa a lista antes de exibir os novos dados
+
+        if (dados && dados.length > 0) {
+            dados.forEach(function (usuario) {
+                var li = document.createElement("li");
+                li.textContent = "Nome: " + usuario.nome + " | Email: " + usuario.email;
+                listaUsuarios.appendChild(li);
+            });
+        } else {
+            var li = document.createElement("li");
+            li.textContent = "Nenhum usuário encontrado.";
+            listaUsuarios.appendChild(li);
+        }
     }
 
-    // Crie uma string HTML para exibir a lista de usuários
-    let userListHTML = "";
-    users.forEach(function (user) {
-        userListHTML += "<li style='color: black; font-size: 30px;'>" + user + "</li>";
-    });
+    mostrarListaUsuarios();
 
-    // Adicione a string HTML à página usando a propriedade innerHTML
-    const userList = document.getElementById("userList");
-    userList.innerHTML = userListHTML;
 </script>
 
 

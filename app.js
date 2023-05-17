@@ -1,21 +1,26 @@
-const form = document.getElementById("userForm");
+function cadastraNome() {
+    var nome_user = document.getElementById("userName"); // pega o input do nome do usuario
+    var email_user = document.getElementById("email"); // pega o input do email do usuario
 
-function testResults(form) {
-    var inputValue = form.userName.value;
-    alert("Cadastro realizado! Seu nome é: " + inputValue);
-    form.addEventListener("submit", function (event) {
-        event.preventDefault();
-        const userName = document.getElementById("userName").value;
+    var dados = JSON.parse(localStorage.getItem("dadosForm")); // cria uma variavel para pegar esses dados e converte em JSON
 
-        // Adiciona o nome do usuário ao Local Storage
-        let users = [];
-        if (localStorage.getItem("users")) {
-            users = JSON.parse(localStorage.getItem("users"));
-        }
-        users.push(userName);
-        localStorage.setItem("users", JSON.stringify(users));
+    if (dados == null) { // se não tiver nada nessa variavel ele vai configurar o local storage
+        localStorage.setItem("dadosForm", "[]");
+        dados = [];
+    }
 
-        window.location.href = "index.html";
-    });
+    var auxRegistro = { //pega o valor que ta relacionado ao input
+        nome: nome_user.value,
+        email: email_user.value
+    }
+
+    dados.push(auxRegistro); //adiciona esse valor aos dados
+
+    localStorage.setItem("dadosForm", JSON.stringify(dados)); //adiciona os dois valores ao local storage
+    alert("Nomes incluidos com sucesso");
+
+    nome_user.value = "";
+    email_user.value = "";
+    window.location.href = "index.html";
+
 }
-
